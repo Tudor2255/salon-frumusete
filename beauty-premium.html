@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com; font-src fonts.gstatic.com cdnjs.cloudflare.com; img-src 'self' images.unsplash.com data:; connect-src 'self';"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noir Atelier — Luxury Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#09080a;--surface:#111014;--gold:#c8a96e;--gold-light:#e8d5a8;--text:#f0ebe4;--muted:rgba(240,235,228,0.45);--rose:#c08080;--border:rgba(200,169,110,0.12)}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(200,169,110,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.12s ease}
+/* LANG SWITCHER */
+.lang-switcher{display:flex;align-items:center;gap:3px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.25);border-radius:30px;padding:3px}
+.lang-btn{padding:4px 11px;border-radius:24px;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;border:none;background:transparent;color:rgba(200,169,110,0.6);transition:all 0.25s;text-transform:uppercase;font-family:'Montserrat',sans-serif}
+.lang-btn.active{background:var(--gold);color:var(--bg)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:28px 72px;border-bottom:1px solid transparent;transition:all 0.5s}
+nav.scrolled{background:rgba(9,8,10,0.95);backdrop-filter:blur(30px);border-color:var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;color:var(--gold);letter-spacing:4px;text-transform:uppercase}
+.nav-right{display:flex;align-items:center;gap:24px}
+nav ul{list-style:none;display:flex;gap:48px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-size:11px;font-weight:300;letter-spacing:4px;text-transform:uppercase;transition:color 0.3s}
+nav a:hover{color:var(--gold-light)}
+.nav-reserve{border:1px solid var(--gold)!important;color:var(--gold)!important;padding:10px 28px;letter-spacing:3px!important;transition:all 0.3s!important}
+.nav-reserve:hover{background:var(--gold)!important;color:var(--bg)!important}
+.hero{height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hero-video-bg{position:absolute;inset:0;background:linear-gradient(to right,rgba(9,8,10,0.9) 40%,rgba(9,8,10,0.3) 100%),url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;animation:kenBurns 20s ease-in-out infinite alternate}
+@keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hero-content{position:relative;z-index:10;padding:0 72px 100px;max-width:700px}
+.hero-year{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;opacity:0;animation:slideUp 1s 0.3s ease forwards}
+h1{font-family:'Playfair Display',serif;font-size:clamp(60px,8vw,110px);font-weight:400;line-height:0.95;letter-spacing:-2px;margin-bottom:32px;opacity:0;animation:slideUp 1s 0.5s ease forwards}
+h1 i{font-style:italic;color:var(--gold)}
+.hero-p{font-size:14px;font-weight:300;letter-spacing:1px;line-height:2;color:var(--muted);max-width:420px;margin-bottom:56px;opacity:0;animation:slideUp 1s 0.7s ease forwards}
+.hero-cta{display:flex;gap:20px;align-items:center;opacity:0;animation:slideUp 1s 0.9s ease forwards}
+.btn-gold-fill{background:var(--gold);color:var(--bg);padding:18px 48px;font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:500;text-decoration:none;transition:all 0.4s}
+.btn-gold-fill:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 24px 48px rgba(200,169,110,0.25)}
+.hero-tel{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);text-decoration:none}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.numbers{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr)}
+.num-item{padding:56px 48px;text-align:center;border-right:1px solid var(--border)}
+.num-item:last-child{border-right:none}
+.num-val{font-family:'Playfair Display',serif;font-size:56px;font-weight:400;color:var(--gold);line-height:1;display:block}
+.num-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);display:block;margin-top:8px}
+#servicii{padding:130px 72px}
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px}
+.svc-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.svc-h2{font-family:'Playfair Display',serif;font-size:clamp(40px,4.5vw,64px);font-weight:400;line-height:1.1;color:var(--text)}
+.svc-intro{font-size:14px;font-weight:300;line-height:1.9;color:var(--muted);align-self:end}
+.acc-item{border-bottom:1px solid var(--border);overflow:hidden}
+.acc-header{display:flex;justify-content:space-between;align-items:center;padding:36px 0;cursor:pointer;transition:color 0.3s}
+.acc-header:hover .acc-title{color:var(--gold)}
+.acc-num{font-size:11px;letter-spacing:3px;color:var(--gold);width:40px}
+.acc-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;flex:1;padding-left:24px;transition:color 0.3s}
+.acc-price{font-size:14px;color:var(--gold);padding-right:32px;font-weight:300;letter-spacing:1px}
+.acc-icon{font-size:14px;color:var(--gold);transition:transform 0.3s}
+.acc-item.open .acc-icon{transform:rotate(45deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease}
+.acc-item.open .acc-body{max-height:200px}
+.acc-content{padding:0 0 36px 64px;font-size:14px;font-weight:300;line-height:1.9;color:var(--muted);max-width:600px}
+#experience{background:var(--surface);padding:130px 72px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;border-top:1px solid var(--border)}
+.exp-img-main{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(20%)}
+.exp-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.exp-title{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:400;line-height:1.15;margin-bottom:28px;color:var(--text)}
+.exp-title i{font-style:italic;color:var(--gold)}
+.exp-text{font-size:14px;font-weight:300;line-height:2;color:var(--muted);margin-bottom:36px}
+.exp-quote{border-left:1px solid var(--gold);padding-left:24px;font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--gold-light);line-height:1.6}
+#rezerva{padding:130px 72px;background:var(--bg);text-align:center}
+.book-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.book-title{font-family:'Playfair Display',serif;font-size:clamp(44px,6vw,86px);font-weight:400;line-height:1;margin-bottom:20px}
+.book-title i{font-style:italic;color:var(--gold)}
+.book-sub{font-size:14px;font-weight:300;letter-spacing:1px;color:var(--muted);max-width:480px;margin:0 auto 56px;line-height:1.9}
+.booking-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:2px;max-width:900px;margin:0 auto;background:var(--border)}
+.form-field{background:var(--surface);padding:20px 24px;display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.form-field select,.form-field input{background:transparent;border:none;outline:none;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;color:var(--text)}
+.form-field select option{background:var(--surface)}
+.form-submit{background:var(--gold);border:none;cursor:pointer;padding:0 40px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--bg);transition:all 0.3s}
+.form-submit:hover{background:var(--gold-light)}
+footer{border-top:1px solid var(--border);padding:48px 72px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);letter-spacing:3px}
+.footer-socials{display:flex;gap:24px}
+.footer-socials a{color:var(--muted);font-size:16px;text-decoration:none;transition:color 0.3s}
+.footer-socials a:hover{color:var(--gold)}
+@media(max-width:900px){nav{padding:20px 24px}nav ul{display:none}.hero-content{padding:0 24px 80px}.numbers{grid-template-columns:1fr 1fr}#servicii,#experience,#rezerva{padding:80px 24px}.services-header{grid-template-columns:1fr;gap:24px}#experience{grid-template-columns:1fr}.booking-form{grid-template-columns:1fr}.form-submit{padding:20px}footer{flex-direction:column;text-align:center;padding:32px 24px}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<nav id="nav">
+  <div class="nav-logo">Noir</div>
+  <div class="nav-right">
+    <ul>
+      <li><a href="#servicii" data-lang="nav_s">Servicii</a></li>
+      <li><a href="#experience" data-lang="nav_a">Atelier</a></li>
+      <li><a href="#rezerva" class="nav-reserve" data-lang="nav_b">Rezervare</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang-target="ro">RO</button>
+      <button class="lang-btn" data-lang-target="en">EN</button>
+      <button class="lang-btn" data-lang-target="ru">RU</button>
+    </div>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-video-bg"></div>
+  <div class="hero-content">
+    <p class="hero-year" data-lang="hero_year">Atelier de Lux · Din 2018</p>
+    <h1 data-lang="hero_h1">L'art de la<br><i>beauté.</i></h1>
+    <p class="hero-p" data-lang="hero_desc">O experiență senzorială completă. Tehnici de vârf aduse din Paris și Milano, într-un spațiu conceput pentru rafinament absolut.</p>
+    <div class="hero-cta">
+      <a href="#rezerva" class="btn-gold-fill" data-lang="btn_book">Rezervă experiența</a>
+    </div>
+  </div>
+</section>
+<div class="numbers">
+  <div class="num-item"><span class="num-val">2k+</span><span class="num-label" data-lang="n1">Cliente Anual</span></div>
+  <div class="num-item"><span class="num-val">12</span><span class="num-label" data-lang="n2">Specialiști Certificați</span></div>
+  <div class="num-item"><span class="num-val">7</span><span class="num-label" data-lang="n3">Ani de Excelență</span></div>
+  <div class="num-item"><span class="num-val">5★</span><span class="num-label" data-lang="n4">Rating Mediu</span></div>
+</div>
+<section id="servicii">
+  <div class="services-header">
+    <div><p class="svc-eyebrow" data-lang="svc_eye">Meniu de Servicii</p><h2 class="svc-h2" data-lang="svc_h2">Tratamente<br>de excepție</h2></div>
+    <p class="svc-intro" data-lang="svc_intro">Fiecare serviciu este o ceremonie. Folosim exclusiv produse de lux certificate: Kerastase, La Mer, Sisley Paris.</p>
+  </div>
+  <div class="services-accordion">
+    <div class="acc-item open"><div class="acc-header" onclick="toggleAcc(this)"><span class="acc-num">01</span><span class="acc-title" data-lang="a1t">Coafură & Colorare Premium</span><span class="acc-price" data-lang="a1p">De la 40 €</span><i class="fas fa-plus acc-icon"></i></div><div class="acc-body"><p class="acc-content" data-lang="a1d">Balayage california, colorare full, tratamente Olaplex, tunsori personalizate. Consultație tricologică inclusă la prima vizită.</p></div></div>
+    <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><span class="acc-num">02</span><span class="acc-title" data-lang="a2t">Facial Ritual La Mer</span><span class="acc-price" data-lang="a2p">De la 70 €</span><i class="fas fa-plus acc-icon"></i></div><div class="acc-body"><p class="acc-content" data-lang="a2d">Protocol de 90 minute cu produse La Mer. Curățare profundă, microdermabrazie blândă, mască personalizată și masaj facial Kobido.</p></div></div>
+    <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><span class="acc-num">03</span><span class="acc-title" data-lang="a3t">Body Ritual & Masaj Luxury</span><span class="acc-price" data-lang="a3p">De la 56 €</span><i class="fas fa-plus acc-icon"></i></div><div class="acc-body"><p class="acc-content" data-lang="a3d">Masaj cu uleiuri esențiale premium, scrub de corp, înfășurare cu argil albă din Maroc. Ritual complet de 2 ore.</p></div></div>
+    <div class="acc-item"><div class="acc-header" onclick="toggleAcc(this)"><span class="acc-num">04</span><span class="acc-title" data-lang="a4t">Manichiură & Pedichiură Atelier</span><span class="acc-price" data-lang="a4p">De la 30 €</span><i class="fas fa-plus acc-icon"></i></div><div class="acc-body"><p class="acc-content" data-lang="a4d">Tratament complet cu produse OPI & Moyra. Nail art personalizat, gel UV, construire unghii.</p></div></div>
+  </div>
+</section>
+<section id="experience">
+  <img class="exp-img-main" src="https://images.unsplash.com/photo-1470259078422-826894b933aa?auto=format&fit=crop&w=700&q=80" alt="Atelier">
+  <div>
+    <p class="exp-eyebrow" data-lang="exp_eye">Filosofia noastră</p>
+    <h2 class="exp-title" data-lang="exp_h2">Nu oferim servicii.<br>Oferim <i>ritualuri.</i></h2>
+    <p class="exp-text" data-lang="exp_text">Noir Atelier a fost conceput ca un sanctuar al frumuseții autentice — un loc unde timpul se oprește, simțurile sunt stimulate și tu ești în centrul atenției.</p>
+    <div class="exp-quote" data-lang="exp_quote">"Frumusețea nu este un lux — este o formă de respect față de tine însuți."</div>
+  </div>
+</section>
+<section id="rezerva">
+  <p class="book-eyebrow" data-lang="book_eye">Rezervare Online</p>
+  <h2 class="book-title" data-lang="book_h2">Alege-ți<br><i>momentul.</i></h2>
+  <p class="book-sub" data-lang="book_sub">Completează formularul și vei fi contactată în 30 de minute pentru confirmare.</p>
+  <div class="booking-form">
+    <div class="form-field"><label class="form-label" data-lang="fl1">Serviciu</label><select><option data-lang="fo1">Coafură & Colorare</option><option data-lang="fo2">Facial La Mer</option><option data-lang="fo3">Body Ritual</option><option data-lang="fo4">Manichiură</option></select></div>
+    <div class="form-field"><label class="form-label" data-lang="fl2">Data</label><input type="date"></div>
+    <div class="form-field"><label class="form-label" data-lang="fl3">Ora preferată</label><select><option>10:00</option><option>12:00</option><option>14:00</option><option>16:00</option><option>18:00</option></select></div>
+    <button class="form-submit" data-lang="btn_submit">Rezervă</button>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">Noir Atelier</div>
+  <div style="font-size:11px;color:var(--muted)" data-lang="addr_footer">Adresa ta poate fi aici · Lun–Sâm 09–21<br><span data-lang="footer_copy">© 2026 Noir Atelier · Luxury Beauty</span></div>
+  <div class="footer-socials"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-pinterest"></i></a></div>
+</footer>
+<script>
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px'});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+function toggleAcc(h){const i=h.parentElement;document.querySelectorAll('.acc-item').forEach(x=>{if(x!==i)x.classList.remove('open')});i.classList.toggle('open');}
+const T={
+ro:{nav_s:"Servicii",nav_a:"Atelier",nav_b:"Rezervare",hero_year:"Atelier de Lux · Din 2018",hero_h1:"L'art de la<br><i>beauté.</i>",hero_desc:"O experiență senzorială completă. Tehnici de vârf aduse din Paris și Milano, într-un spațiu conceput pentru rafinament absolut.",btn_book:"Rezervă experiența",n1:"Cliente Anual",n2:"Specialiști Certificați",n3:"Ani de Excelență",n4:"Rating Mediu",svc_eye:"Meniu de Servicii",svc_h2:"Tratamente<br>de excepție",svc_intro:"Fiecare serviciu este o ceremonie. Folosim exclusiv produse de lux: Kerastase, La Mer, Sisley Paris.",a1t:"Coafură & Colorare Premium",a1p:"De la 40 €",a1d:"Balayage, colorare, tratamente Olaplex. Consultație tricologică la prima vizită.",a2t:"Facial Ritual La Mer",a2p:"De la 70 €",a2d:"Protocol 90 min cu produse La Mer. Microdermabrazie, mască, masaj Kobido.",a3t:"Body Ritual & Masaj Luxury",a3p:"De la 56 €",a3d:"Uleiuri esențiale, scrub, înfășurare argil din Maroc. Ritual complet 2 ore.",a4t:"Manichiură & Pedichiură Atelier",a4p:"De la 30 €",a4d:"OPI & Moyra. Nail art, gel UV, construire unghii.",exp_eye:"Filosofia noastră",exp_h2:"Nu oferim servicii.<br>Oferim <i>ritualuri.</i>",exp_text:"Noir Atelier — un sanctuar al frumuseții autentice unde timpul se oprește și tu ești în centrul atenției.",exp_quote:'"Frumusețea nu este un lux — este o formă de respect față de tine însuți."',book_eye:"Rezervare Online",book_h2:"Alege-ți<br><i>momentul.</i>",book_sub:"Completează formularul și vei fi contactată în 30 de minute.",fl1:"Serviciu",fl2:"Data",fl3:"Ora",fo1:"Coafură & Colorare",fo2:"Facial La Mer",fo3:"Body Ritual",fo4:"Manichiură",btn_submit:"Rezervă",footer_copy:"© 2026 Noir Atelier · Luxury Beauty",addr_footer:"Adresa ta poate fi aici · Lun–Sâm 09–21"},
+en:{nav_s:"Services",nav_a:"Atelier",nav_b:"Book Now",hero_year:"Luxury Atelier · Since 2018",hero_h1:"L'art de la<br><i>beauté.</i>",hero_desc:"A complete sensory experience. Top techniques from Paris and Milan, in a space designed for absolute refinement.",btn_book:"Book the experience",n1:"Annual Clients",n2:"Certified Specialists",n3:"Years of Excellence",n4:"Average Rating",svc_eye:"Services Menu",svc_h2:"Exceptional<br>treatments",svc_intro:"Every service is a ceremony. Exclusively certified luxury products: Kerastase, La Mer, Sisley Paris.",a1t:"Premium Hair & Colour",a1p:"From € 40",a1d:"Balayage, full colour, Olaplex treatments. Trichology consultation on first visit.",a2t:"La Mer Facial Ritual",a2p:"From € 70",a2d:"90-min protocol with La Mer products. Deep cleanse, microdermabrasion, Kobido massage.",a3t:"Body Ritual & Luxury Massage",a3p:"From € 56",a3d:"Essential oils, body scrub, white clay wrap from Morocco. Full 2-hour ritual.",a4t:"Atelier Manicure & Pedicure",a4p:"From € 30",a4d:"OPI & Moyra products. Nail art, UV gel, nail extensions.",exp_eye:"Our philosophy",exp_h2:"We don't offer services.<br>We offer <i>rituals.</i>",exp_text:"Noir Atelier was conceived as a sanctuary of authentic beauty — where time stops, senses are stimulated and you are at the centre of attention.",exp_quote:'"Beauty is not a luxury — it is a form of self-respect."',book_eye:"Online Booking",book_h2:"Choose your<br><i>moment.</i>",book_sub:"Fill in the form and you will be contacted within 30 minutes for confirmation.",fl1:"Service",fl2:"Date",fl3:"Preferred time",fo1:"Hair & Colour",fo2:"La Mer Facial",fo3:"Body Ritual",fo4:"Manicure",btn_submit:"Book",footer_copy:"© 2026 Noir Atelier · Luxury Beauty",addr_footer:"Your address can be here · Mon–Sat 09–21"},
+ru:{nav_s:"Услуги",nav_a:"Ателье",nav_b:"Запись",hero_year:"Люкс-ателье · С 2018",hero_h1:"L'art de la<br><i>beauté.</i>",hero_desc:"Полный сенсорный опыт. Передовые техники из Парижа и Милана в пространстве для абсолютного изыска.",btn_book:"Забронировать опыт",n1:"Клиентов в год",n2:"Сертифицированных специалистов",n3:"Лет совершенства",n4:"Средний рейтинг",svc_eye:"Меню услуг",svc_h2:"Исключительные<br>процедуры",svc_intro:"Каждая услуга — это церемония. Используем только сертифицированные люкс-продукты: Kerastase, La Mer, Sisley Paris.",a1t:"Укладка и окрашивание Премиум",a1p:"От 40 €",a1d:"Балаяж, полное окрашивание, Olaplex. Трихологическая консультация при первом визите.",a2t:"Ритуал для лица La Mer",a2p:"От 70 €",a2d:"90-минутный протокол с La Mer. Глубокое очищение, микродермабразия, массаж Кобидо.",a3t:"Ритуал для тела и люкс-массаж",a3p:"От 56 €",a3d:"Эфирные масла, скраб, обёртывание белой глиной из Марокко. Полный 2-часовой ритуал.",a4t:"Маникюр и педикюр в Ателье",a4p:"От 30 €",a4d:"OPI & Moyra. Nail-арт, UV-гель, наращивание.",exp_eye:"Наша философия",exp_h2:"Мы предлагаем не услуги.<br>Мы предлагаем <i>ритуалы.</i>",exp_text:"Noir Atelier — святилище настоящей красоты, где время останавливается, чувства пробуждаются и вы в центре внимания.",exp_quote:'"Красота — это не роскошь, а форма уважения к себе."',book_eye:"Онлайн-запись",book_h2:"Выберите<br><i>момент.</i>",book_sub:"Заполните форму, и вас свяжутся в течение 30 минут для подтверждения.",fl1:"Услуга",fl2:"Дата",fl3:"Предпочтительное время",fo1:"Укладка и окрашивание",fo2:"Ритуал La Mer",fo3:"Ритуал для тела",fo4:"Маникюр",btn_submit:"Записаться",footer_copy:"© 2026 Noir Atelier · Люкс-красота",addr_footer:"Ваш адрес может быть здесь · Пн–Сб 09–21"}
+};
+function setLang(T,l){document.querySelectorAll('[data-lang]').forEach(el=>{const v=T[l]&&T[l][el.getAttribute('data-lang')];if(v!==undefined){const s=String(v).replace(/<script[\s\S]*?<\/script>/gi,'');if(el.tagName==='INPUT'||el.tagName==='TEXTAREA')el.placeholder=v;else el.innerHTML=s;}});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.langTarget===l));document.documentElement.lang=l;localStorage.setItem('lang',l);}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{setLang(T,b.dataset.langTarget)}));
+setLang(T,localStorage.getItem('lang')||'ro');
+</script>
+</body>
+</html>
